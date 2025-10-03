@@ -17,11 +17,12 @@ const postsRouter = require('./routes/postRoutes');
 
 // Creates the express application
 const app = express();
-const port = 9090;
+const port = process.env.PORT || 5000;
+const host = '0.0.0.0';
 
 // Listening to the port provided
-app.listen(port, () => {
-  console.log('App listening at port ' + port)
+app.listen(port, host, () => {
+  console.log('App listening at http://' + host + ':' + port)
 });
 
 // Creates an engine called "hbs" using the express-handlebars package.
