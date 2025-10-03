@@ -9,6 +9,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
 const moment = require('moment');
+const { sessionKey } = require('./config');
 
 // Routes imports
 const authRouter = require('./routes/auth');
@@ -61,7 +62,7 @@ app.use(express.static('public'));
 // Insert server configuration after this comment
 // Sessions
 app.use(session({
-  secret: 'somegibberishsecret',
+  secret: sessionKey,
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   resave: false,
   saveUninitialized: true,
