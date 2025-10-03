@@ -18,14 +18,3 @@ exports.createPost = (obj, next) => {
     }) 
 }
 
-exports.updatePost = (id, obj, next) => {
-    Post.findByIdAndUpdate(id, obj, { new: true }, function(err, post) {
-        next(err, post);
-    });
-}
-
-exports.findPost = (id, next) => {
-    Post.findById(id, function(err, post) {
-        next(err, post);
-    });
-}
